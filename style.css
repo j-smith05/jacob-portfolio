@@ -119,6 +119,43 @@ h3 {
   margin-top: 0;
 }
 
+.role-meta {
+  color: var(--muted);
+  font-weight: 600;
+  font-size: 0.9rem;
+  margin: -4px 0 14px 0;
+}
+
+.project ul {
+  margin: 10px 0 0 0;
+  padding-left: 20px;
+  color: var(--text);
+}
+
+.project li {
+  margin-bottom: 6px;
+}
+
+.project li:last-child {
+  margin-bottom: 0;
+}
+
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 10px 0 14px 0;
+}
+
+.tag {
+  background: #eaf1fc;
+  color: var(--accent);
+  font-size: 0.8rem;
+  font-weight: 600;
+  padding: 4px 10px;
+  border-radius: 999px;
+}
+
 .project a {
   font-weight: 600;
   text-decoration: none;
