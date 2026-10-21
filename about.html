@@ -18,20 +18,29 @@
 
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="About Jacob Smith" />
+  <meta name="twitter:description" content="Experience, education, and skills of Jacob Smith — B.S. Computer Science (Cybersecurity) student and Cybersecurity Resiliency Intern at St. Luke's Health System." />
   <meta name="twitter:image" content="https://j-smith05.github.io/jacob-portfolio/og-image.png" />
 
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <header>
-    <div class="container">
-      <h1 class="heading-flush">About Me</h1>
+  <div class="topbar">
+    <div class="container topbar-inner">
+      <a href="index.html" class="brand">Jacob Smith</a>
       <nav class="nav" aria-label="Main navigation">
         <a href="index.html">Home</a>
         <a href="projects.html">Projects</a>
-        <a href="about.html" class="active">About</a>
+        <a href="about.html" class="active" aria-current="page">About</a>
         <a href="contact.html">Contact</a>
       </nav>
+    </div>
+  </div>
+
+  <header>
+    <div class="container">
+      <p class="eyebrow">Background</p>
+      <h1 class="heading-flush">About Me</h1>
+      <p class="tagline">Experience, education, and skills.</p>
     </div>
   </header>
 
@@ -52,7 +61,7 @@
 
     <div class="project">
       <h3>Cybersecurity Resiliency Intern</h3>
-      <p class="role-meta">St. Luke's Health System &bull; Boise, ID &bull; March 2026 &ndash; Present</p>
+      <p class="role-meta">St. Luke's Health System &bull; Boise, ID &bull; Mar. 2026 &ndash; Present</p>
       <ul>
         <li>Supported cybersecurity preparedness, disaster recovery, and downtime readiness initiatives across a healthcare environment</li>
         <li>Developed and distributed 1,000+ downtime playbooks and charts and updated 300+ emergency communication phones to support hospital operations during extended downtime</li>
@@ -73,7 +82,7 @@
 
     <div class="project">
       <h3>Courtesy Clerk / Cashier</h3>
-      <p class="role-meta">Safeway, Inc. &bull; Spokane, WA &bull; June 2022 &ndash; August 2023</p>
+      <p class="role-meta">Safeway, Inc. &bull; Spokane, WA &bull; June 2022 &ndash; Aug. 2023</p>
       <ul>
         <li>Advanced from Courtesy Clerk to Cashier while supporting customer service and daily front-end operations</li>
         <li>Processed customer purchases and assisted with self-checkout, payment issues, and customer questions</li>
@@ -82,9 +91,27 @@
     </div>
 
     <h2>Education</h2>
-    <div class="project">
-      <h3>Boise State University</h3>
-      <p class="role-meta">B.S. Computer Science, Cybersecurity Emphasis &bull; Boise, ID &bull; Aug. 2023 &ndash; Dec. 2027</p>
+    <div class="project edu-card">
+      <div class="edu-head">
+        <div>
+          <h3>Boise State University</h3>
+          <p class="edu-location">Boise, Idaho &bull; Go Broncos!</p>
+        </div>
+        <span class="edu-badge">Expected Dec. 2027</span>
+      </div>
+      <p class="role-meta">B.S. Computer Science, Cybersecurity Emphasis &bull; Aug. 2023 &ndash; Present</p>
+      <p class="edu-blurb">
+        A public research university set along the Boise River in the heart of the state capital &mdash;
+        and home of the Broncos' iconic blue turf.
+      </p>
+      <p><strong>Relevant Coursework</strong></p>
+      <div class="tags">
+        <span class="tag">CPS 401 &ndash; Defensive Security</span>
+        <span class="tag">CPS 403 &ndash; Recovery &amp; Forensics</span>
+        <span class="tag">CS 331 &ndash; Computer Security</span>
+        <span class="tag">CPS 301 &ndash; Information Assurance</span>
+        <span class="tag">CS 425 &ndash; Computer Networks (in progress)</span>
+      </div>
     </div>
 
     <h2>Skills &amp; Qualifications</h2>
@@ -95,7 +122,8 @@
           <ul>
             <li>Java</li>
             <li>Python</li>
-            <li>C </li>
+            <li>C</li>
+            <li>Go</li>
             <li>SQL</li>
             <li>JavaScript</li>
             <li>HTML / CSS</li>

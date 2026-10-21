@@ -6,39 +6,48 @@
   <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self'; style-src 'self'; script-src 'none'; object-src 'none'; base-uri 'self'; form-action 'none'; frame-ancestors 'none'" />
   <meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin" />
   <title>Jacob Smith | Projects</title>
-  <meta name="description" content="Cybersecurity and software projects by Jacob Smith, including an OpenSSH log analyzer and a secure password vault." />
+  <meta name="description" content="Cybersecurity, networking, and software projects by Jacob Smith, including an OpenSSH log analyzer, a network page-load analyzer, and a secure password vault." />
 
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://j-smith05.github.io/jacob-portfolio/projects.html" />
   <meta property="og:title" content="Projects — Jacob Smith" />
-  <meta property="og:description" content="Cybersecurity and software projects by Jacob Smith, including an OpenSSH log analyzer and a secure password vault." />
+  <meta property="og:description" content="Cybersecurity, networking, and software projects by Jacob Smith, including an OpenSSH log analyzer, a network page-load analyzer, and a secure password vault." />
   <meta property="og:image" content="https://j-smith05.github.io/jacob-portfolio/og-image.png" />
   <meta property="og:image:width" content="1200" />
   <meta property="og:image:height" content="630" />
 
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="Projects — Jacob Smith" />
+  <meta name="twitter:description" content="Cybersecurity, networking, and software projects by Jacob Smith, including an OpenSSH log analyzer, a network page-load analyzer, and a secure password vault." />
   <meta name="twitter:image" content="https://j-smith05.github.io/jacob-portfolio/og-image.png" />
 
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <header>
-    <div class="container">
-      <h1 class="heading-flush">Projects</h1>
+  <div class="topbar">
+    <div class="container topbar-inner">
+      <a href="index.html" class="brand">Jacob Smith</a>
       <nav class="nav" aria-label="Main navigation">
         <a href="index.html">Home</a>
-        <a href="projects.html" class="active">Projects</a>
+        <a href="projects.html" class="active" aria-current="page">Projects</a>
         <a href="about.html">About</a>
         <a href="contact.html">Contact</a>
       </nav>
+    </div>
+  </div>
+
+  <header>
+    <div class="container">
+      <p class="eyebrow">Portfolio</p>
+      <h1 class="heading-flush">Projects</h1>
+      <p class="tagline">Security, networking, and software projects from my coursework at Boise State.</p>
     </div>
   </header>
 
   <div class="section">
     <div class="project">
       <h3>OpenSSH Log Analyzer</h3>
-      <p class="role-meta">March 2026 &ndash; May 2026</p>
+      <p class="role-meta">Mar. 2026 &ndash; May 2026</p>
       <div class="tags">
         <span class="tag">Java</span>
         <span class="tag">SQLite</span>
@@ -67,36 +76,91 @@
     </div>
 
     <div class="project">
-      <h3>Jeopardy Web Game</h3>
+      <h3>Page-Load Network Analyzer</h3>
+      <p class="role-meta">Oct. 2026</p>
       <div class="tags">
-        <span class="tag">HTML</span>
-        <span class="tag">CSS</span>
-        <span class="tag">JavaScript</span>
-      </div>
-      <p>A fully interactive quiz board built with HTML, CSS, and JavaScript.</p>
-      <p><em>Repository is private.</em></p>
-    </div>
-
-    <div class="project">
-      <h3>FormatChecker</h3>
-      <div class="tags">
-        <span class="tag">Java</span>
-      </div>
-      <p>A Java CLI tool that validates grid-format numeric files and detects formatting inconsistencies.</p>
-      <a href="https://github.com/j-smith05/CS-221" target="_blank" rel="noopener noreferrer">View on GitHub</a>
-    </div>
-
-    <div class="project">
-      <h3>List Implementations &amp; Tester (CS 221)</h3>
-      <div class="tags">
-        <span class="tag">Java</span>
-        <span class="tag">Data Structures</span>
+        <span class="tag">C</span>
+        <span class="tag">Sockets</span>
+        <span class="tag">TCP/IP</span>
+        <span class="tag">DNS</span>
+        <span class="tag">Bash</span>
       </div>
       <p>
-        Custom list data structures (ArrayList, SingleLinkedList, DoubleLinkedList) built from scratch,
-        tested using a ListTester framework to verify correct operations and iterator behavior.
+        A C command-line tool built on POSIX sockets that fetches pages over raw HTTP and times each stage of the
+        load &mdash; DNS lookup, TCP connect, time to first byte, and total transfer. Used it to measure Debian mirrors
+        across the U.S., Europe, and Japan from three vantage points (laptop, university server, and cloud
+        Codespace), then compared results against speed-of-light propagation limits to analyze routing, caching,
+        and NAT effects.
       </p>
       <p><em>Academic project &mdash; not publicly available.</em></p>
+    </div>
+
+    <div class="project">
+      <h3>Reliable Data Transfer over UDP</h3>
+      <p class="role-meta">Oct. 2026</p>
+      <div class="tags">
+        <span class="tag">C</span>
+        <span class="tag">UDP</span>
+        <span class="tag">Go-Back-N</span>
+        <span class="tag">Checksums</span>
+      </div>
+      <p>
+        A Go-Back-N sender and receiver in C that reliably transfers files over UDP through a relay that randomly
+        drops, corrupts, and duplicates packets. Detects tampered data with the Internet checksum, recovers with
+        sequence numbers, ACKs, and retransmission timeouts, and was benchmarked across window sizes and loss rates.
+      </p>
+      <a href="https://github.com/j-smith05/cs425-p2" target="_blank" rel="noopener noreferrer">View on GitHub</a>
+    </div>
+
+    <div class="project">
+      <h3>SMTP Mail Client</h3>
+      <p class="role-meta">Sept. 2026</p>
+      <div class="tags">
+        <span class="tag">C</span>
+        <span class="tag">SMTP</span>
+        <span class="tag">Sockets</span>
+        <span class="tag">Unit Testing</span>
+      </div>
+      <p>
+        A command-line email client in C that speaks SMTP directly over TCP sockets, handling the full HELO / MAIL FROM /
+        RCPT TO / DATA exchange, multiline server responses, dot-stuffing, partial reads and writes, and unexpected
+        disconnects. Unit tested to 100% code coverage and built with AddressSanitizer to catch memory errors.
+      </p>
+      <a href="https://github.com/j-smith05/cs425-p1" target="_blank" rel="noopener noreferrer">View on GitHub</a>
+    </div>
+
+    <div class="project">
+      <h3>Jeopardy Web Game</h3>
+      <p class="role-meta">Nov. 2025 &ndash; Dec. 2025</p>
+      <div class="tags">
+        <span class="tag">JavaScript</span>
+        <span class="tag">Node.js</span>
+        <span class="tag">Express</span>
+        <span class="tag">SQLite</span>
+        <span class="tag">Scrum</span>
+      </div>
+      <p>
+        A full-stack, interactive Jeopardy-style trivia game built by a five-person team using Scrum. The HTML, CSS,
+        and JavaScript front end pulls questions from a Node.js/Express REST API backed by SQLite, with Jest and
+        Supertest for API testing.
+      </p>
+      <a href="https://github.com/j-smith05/CS208-F25-Team5" target="_blank" rel="noopener noreferrer">View on GitHub</a>
+    </div>
+
+    <div class="project">
+      <h3>Java-to-Go Banking System</h3>
+      <p class="role-meta">Sept. 2026 &ndash; Oct. 2026</p>
+      <div class="tags">
+        <span class="tag">Go</span>
+        <span class="tag">Concurrency</span>
+        <span class="tag">Java</span>
+      </div>
+      <p>
+        Ported a Java banking application to Go, replacing class inheritance with Go structs, interfaces, and
+        packages. Uses goroutines and channels to calculate interest across checking and savings accounts
+        concurrently, verified against a provided test suite.
+      </p>
+      <a href="https://github.com/j-smith05/CS354" target="_blank" rel="noopener noreferrer">View on GitHub</a>
     </div>
   </div>
 
