@@ -3,32 +3,36 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self'; style-src 'self'; script-src 'none'; object-src 'none'; base-uri 'self'; form-action 'none'; frame-ancestors 'none'" />
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self'; style-src 'self'; script-src 'self'; object-src 'none'; base-uri 'self'; form-action 'none'" />
   <meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin" />
   <title>Jacob Smith | Projects</title>
   <meta name="description" content="Cybersecurity, networking, and software projects by Jacob Smith, including an OpenSSH log analyzer, a network page-load analyzer, and a secure password vault." />
 
   <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://j-smith05.github.io/jacob-portfolio/projects.html" />
+  <meta property="og:url" content="https://j-smith05.github.io/jacob-portfolio/pages/projects.html" />
   <meta property="og:title" content="Projects — Jacob Smith" />
   <meta property="og:description" content="Cybersecurity, networking, and software projects by Jacob Smith, including an OpenSSH log analyzer, a network page-load analyzer, and a secure password vault." />
-  <meta property="og:image" content="https://j-smith05.github.io/jacob-portfolio/og-image.png" />
+  <meta property="og:image" content="https://j-smith05.github.io/jacob-portfolio/images/og-image.png" />
   <meta property="og:image:width" content="1200" />
   <meta property="og:image:height" content="630" />
 
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="Projects — Jacob Smith" />
   <meta name="twitter:description" content="Cybersecurity, networking, and software projects by Jacob Smith, including an OpenSSH log analyzer, a network page-load analyzer, and a secure password vault." />
-  <meta name="twitter:image" content="https://j-smith05.github.io/jacob-portfolio/og-image.png" />
+  <meta name="twitter:image" content="https://j-smith05.github.io/jacob-portfolio/images/og-image.png" />
 
-  <link rel="stylesheet" href="style.css" />
+  <link rel="icon" href="../images/favicon.svg" type="image/svg+xml" />
+  <link rel="stylesheet" href="../css/style.css" />
+  <script src="../js/theme.js"></script>
+  <script src="../js/main.js" defer></script>
 </head>
 <body>
+  <a class="skip-link" href="#main">Skip to content</a>
   <div class="topbar">
     <div class="container topbar-inner">
-      <a href="index.html" class="brand">Jacob Smith</a>
+      <a href="../index.html" class="brand">Jacob Smith</a>
       <nav class="nav" aria-label="Main navigation">
-        <a href="index.html">Home</a>
+        <a href="../index.html">Home</a>
         <a href="projects.html" class="active" aria-current="page">Projects</a>
         <a href="about.html">About</a>
         <a href="contact.html">Contact</a>
@@ -44,8 +48,8 @@
     </div>
   </header>
 
-  <div class="section">
-    <div class="project">
+  <main class="section" id="main">
+    <div class="project" data-category="security">
       <h3>OpenSSH Log Analyzer</h3>
       <p class="role-meta">Mar. 2026 &ndash; May 2026</p>
       <div class="tags">
@@ -63,7 +67,7 @@
       <p><em>Academic project &mdash; not publicly available.</em></p>
     </div>
 
-    <div class="project">
+    <div class="project" data-category="security web">
       <h3>Secure Password Vault</h3>
       <p class="role-meta">Oct. 2025 &ndash; Dec. 2025</p>
       <div class="tags">
@@ -75,7 +79,7 @@
       <a href="https://github.com/IsaacHager/CS331_Project_Password-Vault" target="_blank" rel="noopener noreferrer">View on GitHub</a>
     </div>
 
-    <div class="project">
+    <div class="project" data-category="networking">
       <h3>Page-Load Network Analyzer</h3>
       <p class="role-meta">Oct. 2026</p>
       <div class="tags">
@@ -95,7 +99,7 @@
       <p><em>Academic project &mdash; not publicly available.</em></p>
     </div>
 
-    <div class="project">
+    <div class="project" data-category="networking">
       <h3>Reliable Data Transfer over UDP</h3>
       <p class="role-meta">Oct. 2026</p>
       <div class="tags">
@@ -112,7 +116,7 @@
       <a href="https://github.com/j-smith05/cs425-p2" target="_blank" rel="noopener noreferrer">View on GitHub</a>
     </div>
 
-    <div class="project">
+    <div class="project" data-category="networking">
       <h3>SMTP Mail Client</h3>
       <p class="role-meta">Sept. 2026</p>
       <div class="tags">
@@ -129,7 +133,7 @@
       <a href="https://github.com/j-smith05/cs425-p1" target="_blank" rel="noopener noreferrer">View on GitHub</a>
     </div>
 
-    <div class="project">
+    <div class="project" data-category="web">
       <h3>Jeopardy Web Game</h3>
       <p class="role-meta">Nov. 2025 &ndash; Dec. 2025</p>
       <div class="tags">
@@ -147,7 +151,7 @@
       <a href="https://github.com/j-smith05/CS208-F25-Team5" target="_blank" rel="noopener noreferrer">View on GitHub</a>
     </div>
 
-    <div class="project">
+    <div class="project" data-category="software">
       <h3>Java-to-Go Banking System</h3>
       <p class="role-meta">Sept. 2026 &ndash; Oct. 2026</p>
       <div class="tags">
@@ -162,8 +166,8 @@
       </p>
       <a href="https://github.com/j-smith05/CS354" target="_blank" rel="noopener noreferrer">View on GitHub</a>
     </div>
-  </div>
+  </main>
 
-  <footer>&copy; 2026 Jacob Smith &mdash; Portfolio</footer>
+  <footer>&copy; <span data-year>2026</span> Jacob Smith &mdash; Built by hand with HTML, CSS &amp; JavaScript</footer>
 </body>
 </html>

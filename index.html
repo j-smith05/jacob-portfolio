@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self'; style-src 'self'; script-src 'none'; object-src 'none'; base-uri 'self'; form-action 'none'; frame-ancestors 'none'" />
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self'; style-src 'self'; script-src 'self'; object-src 'none'; base-uri 'self'; form-action 'none'" />
   <meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin" />
   <title>Jacob Smith | Home</title>
   <meta name="description" content="Jacob Edgar Smith — Computer Science (Cybersecurity) student at Boise State University." />
@@ -12,26 +12,30 @@
   <meta property="og:url" content="https://j-smith05.github.io/jacob-portfolio/" />
   <meta property="og:title" content="Jacob Smith — Portfolio" />
   <meta property="og:description" content="B.S. Computer Science (Cybersecurity) student at Boise State University. Cybersecurity Resiliency Intern at St. Luke's Health System. View my projects and resume." />
-  <meta property="og:image" content="https://j-smith05.github.io/jacob-portfolio/og-image.png" />
+  <meta property="og:image" content="https://j-smith05.github.io/jacob-portfolio/images/og-image.png" />
   <meta property="og:image:width" content="1200" />
   <meta property="og:image:height" content="630" />
 
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="Jacob Smith — Portfolio" />
   <meta name="twitter:description" content="B.S. Computer Science (Cybersecurity) student at Boise State University — projects and resume." />
-  <meta name="twitter:image" content="https://j-smith05.github.io/jacob-portfolio/og-image.png" />
+  <meta name="twitter:image" content="https://j-smith05.github.io/jacob-portfolio/images/og-image.png" />
 
-  <link rel="stylesheet" href="style.css" />
+  <link rel="icon" href="images/favicon.svg" type="image/svg+xml" />
+  <link rel="stylesheet" href="css/style.css" />
+  <script src="js/theme.js"></script>
+  <script src="js/main.js" defer></script>
 </head>
 <body>
+  <a class="skip-link" href="#main">Skip to content</a>
   <div class="topbar">
     <div class="container topbar-inner">
       <a href="index.html" class="brand">Jacob Smith</a>
       <nav class="nav" aria-label="Main navigation">
         <a href="index.html" class="active" aria-current="page">Home</a>
-        <a href="projects.html">Projects</a>
-        <a href="about.html">About</a>
-        <a href="contact.html">Contact</a>
+        <a href="pages/projects.html">Projects</a>
+        <a href="pages/about.html">About</a>
+        <a href="pages/contact.html">Contact</a>
       </nav>
     </div>
   </div>
@@ -39,20 +43,20 @@
   <header>
     <div class="container">
       <div class="profile-row">
-        <img src="LinkedInPP.JPG" alt="Jacob Smith" class="profile-pic" />
+        <img src="images/jacob-smith.jpg" alt="Jacob Smith" class="profile-pic" />
         <div>
-          <p class="eyebrow">Computer Science &middot; Cybersecurity</p>
+          <p class="eyebrow">Computer Science &middot; <span class="typed" data-words="Cybersecurity|Network Security|Incident Preparedness|Ethical Hacking">Cybersecurity</span></p>
           <h1 class="heading-flush">Jacob Edgar Smith</h1>
           <p class="tagline">Cybersecurity student at Boise State University &bull; Resiliency Intern at St. Luke's Health System</p>
           <div class="hero-actions">
-            <a href="files/Jacob-Smith-Resume.pdf" class="btn btn-primary" target="_blank" rel="noopener noreferrer">Download Resume</a>
+            <a href="files/jacob-smith-resume.pdf" class="btn btn-primary" target="_blank" rel="noopener noreferrer">Download Resume</a>
           </div>
         </div>
       </div>
     </div>
   </header>
 
-  <div class="section">
+  <main class="section" id="main">
     <h2>Welcome</h2>
     <p>
       I'm a Computer Science student focused on cybersecurity, driven by solving complex problems and
@@ -61,8 +65,8 @@
       across a large healthcare environment.
     </p>
     <p>
-      Check out my <a href="projects.html">projects</a>, learn more <a href="about.html">about me</a>,
-      or reach me on the <a href="contact.html">contact</a> page.
+      Check out my <a href="pages/projects.html">projects</a>, learn more <a href="pages/about.html">about me</a>,
+      or reach me on the <a href="pages/contact.html">contact</a> page.
     </p>
 
     <div class="facts-grid">
@@ -106,11 +110,11 @@
             attack patterns.
           </p>
         </div>
-        <a href="projects.html" class="btn-link">View all projects &rarr;</a>
+        <a href="pages/projects.html" class="btn-link">View all projects &rarr;</a>
       </div>
     </div>
-  </div>
+  </main>
 
-  <footer>&copy; 2026 Jacob Smith &mdash; Portfolio</footer>
+  <footer>&copy; <span data-year>2026</span> Jacob Smith &mdash; Built by hand with HTML, CSS &amp; JavaScript</footer>
 </body>
 </html>
