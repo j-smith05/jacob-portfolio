@@ -455,3 +455,15 @@ footer {
     align-items: flex-start;
   }
 }
+
+.heading-flush {
+  margin: 0;
+}
+
+.rec-card-compact {
+  max-width: 640px;
+}
+
+.section-gap-top {
+  margin-top: 36px;
+}
