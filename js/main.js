@@ -196,7 +196,7 @@
       "%cHi there, fellow inspector of source code! 👋",
       "color:#d64309;font-size:14px;font-weight:bold;"
     );
-    console.log("This site is hand-built with plain HTML, CSS & JavaScript and a strict Content-Security-Policy.");
+    console.log("This site uses plain HTML, CSS & JavaScript with a strict Content-Security-Policy.");
     console.log("Like what you see? Reach me at jesmith4405@icloud.com");
   }
 
