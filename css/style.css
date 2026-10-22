@@ -66,6 +66,22 @@
   box-sizing: border-box;
 }
 
+/* Reserve the scrollbar's space so content doesn't shift sideways between short and long pages */
+html {
+  scrollbar-gutter: stable;
+}
+
+/* Smooth cross-fade between pages (supported browsers); the top bar stays put */
+@view-transition {
+  navigation: auto;
+}
+
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation-duration: 0.22s;
+  animation-timing-function: ease-out;
+}
+
 body {
   margin: 0;
   font-family: "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
@@ -82,6 +98,7 @@ a {
 }
 
 .topbar {
+  view-transition-name: topbar;
   background: var(--navy);
   padding: 10px 0;
   position: sticky;
@@ -247,17 +264,26 @@ h3 {
 
 .facts-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  grid-template-columns: repeat(3, 1fr);
   gap: 16px;
-  margin: 30px 0;
+  margin: 30px 0 36px 0;
 }
 
 .fact-card {
+  display: flex;
+  flex-direction: column;
   background: var(--card);
   border: 1px solid var(--border);
+  border-top: 3px solid var(--orange);
   border-radius: 10px;
   padding: 18px 20px;
   box-shadow: 0 2px 10px var(--shadow);
+}
+
+@media (max-width: 600px) {
+  .facts-grid {
+    grid-template-columns: 1fr;
+  }
 }
 
 .fact-card .fact-label {
@@ -271,12 +297,13 @@ h3 {
 
 .fact-card .fact-value {
   margin: 0;
+  line-height: 1.4;
   font-weight: 600;
   color: var(--heading);
 }
 
 .fact-card .fact-sub {
-  margin: 4px 0 0 0;
+  margin: 8px 0 0 0;
   color: var(--muted);
   font-size: 0.9rem;
 }
@@ -331,6 +358,23 @@ h3 {
   border-radius: 14px;
   border: 3px solid rgba(255, 255, 255, 0.25);
   box-shadow: 0 6px 18px rgba(0, 0, 0, 0.3);
+}
+
+.hero-location {
+  display: flex;
+  align-items: flex-start;
+  gap: 6px;
+  margin: 8px 0 0 0;
+  color: #c6d3e6;
+  font-size: 0.9rem;
+}
+
+.hero-location svg {
+  width: 16px;
+  height: 16px;
+  margin-top: 0.2em;
+  flex-shrink: 0;
+  color: var(--orange-light);
 }
 
 .hero-actions {
@@ -432,26 +476,6 @@ h3 {
   font-size: 0.85rem;
 }
 
-.rec-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 18px;
-  margin-top: 16px;
-}
-
-.rec-placeholder {
-  border: 2px dashed var(--border);
-  border-radius: 10px;
-  padding: 22px 24px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  color: var(--muted);
-  font-weight: 600;
-  min-height: 140px;
-}
-
 .contact-item {
   display: flex;
   align-items: center;
@@ -471,7 +495,8 @@ h3 {
   flex-shrink: 0;
 }
 
-.contact-item a {
+.contact-item a,
+.contact-item span {
   font-weight: 600;
   text-decoration: none;
   color: var(--text);
@@ -564,6 +589,27 @@ footer {
   margin-bottom: 10px;
 }
 
+.edu-stats {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 0 0 14px 0;
+}
+
+.edu-stats span {
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 4px 12px;
+  font-size: 0.88rem;
+  color: var(--muted);
+}
+
+.edu-stats strong {
+  color: var(--heading);
+  margin-left: 4px;
+}
+
 .edu-blurb {
   color: var(--muted);
   margin: 0 0 14px 0;
@@ -594,6 +640,48 @@ footer {
 }
 
 /* ---------- Theme toggle ---------- */
+/* JS-only controls are in the HTML but hidden until theme.js marks the page with .js,
+   which happens before first paint, so nothing shifts once main.js loads */
+.theme-toggle,
+.filter-bar,
+.filter-status,
+.copy-btn {
+  display: none;
+}
+
+.js .theme-toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.js .filter-bar {
+  display: flex;
+}
+
+.js .filter-status {
+  display: block;
+}
+
+.js .copy-btn {
+  display: inline-block;
+}
+
+/* Moon in light mode, sun in dark mode */
+.theme-toggle::before {
+  content: "\263E";
+}
+
+:root[data-theme="dark"] .theme-toggle::before {
+  content: "\2600";
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) .theme-toggle::before {
+    content: "\2600";
+  }
+}
+
 .theme-toggle {
   background: rgba(255, 255, 255, 0.1);
   border: 1px solid rgba(255, 255, 255, 0.25);
@@ -632,7 +720,6 @@ footer {
 
 /* ---------- Project filter ---------- */
 .filter-bar {
-  display: flex;
   flex-wrap: wrap;
   gap: 8px;
   margin-bottom: 8px;
@@ -689,8 +776,8 @@ footer {
 /* ---------- Scroll reveal ---------- */
 .reveal {
   opacity: 0;
-  transform: translateY(14px);
-  transition: opacity 0.5s ease, transform 0.5s ease;
+  transform: translateY(6px);
+  transition: opacity 0.3s ease-out, transform 0.3s ease-out;
 }
 
 .reveal.is-visible {
@@ -733,6 +820,10 @@ footer {
 }
 
 @media (prefers-reduced-motion: reduce) {
+  @view-transition {
+    navigation: none;
+  }
+
   *,
   *::before,
   *::after {

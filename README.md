@@ -17,7 +17,10 @@ jacob-portfolio/
 │   ├── main.js         # Interactive features (see below)
 │   └── redirect.js     # Old-URL forwarding used by 404.html
 ├── files/              # Resume, cover letter, and other PDFs
-└── images/             # Profile photo, social preview image, favicon
+├── images/             # Profile photo, social preview image, favicon
+├── .well-known/
+│   └── security.txt    # How to report a security issue (RFC 9116)
+└── .nojekyll           # Tells GitHub Pages to publish dot-folders like .well-known/
 ```
 
 ## Features

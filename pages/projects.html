@@ -37,18 +37,28 @@
         <a href="about.html">About</a>
         <a href="contact.html">Contact</a>
       </nav>
+      <button type="button" class="theme-toggle" aria-label="Toggle dark mode" title="Toggle dark mode"></button>
     </div>
   </div>
 
   <header>
     <div class="container">
-      <p class="eyebrow">Portfolio</p>
+      <p class="eyebrow">Portfolio &middot; <span class="typed" data-words="Security|Networking|Web|Software">Security</span></p>
       <h1 class="heading-flush">Projects</h1>
       <p class="tagline">Security, networking, and software projects from my coursework at Boise State.</p>
     </div>
   </header>
 
   <main class="section" id="main">
+    <div class="filter-bar" role="group" aria-label="Filter projects by category">
+      <button type="button" class="filter-btn" data-filter="all" aria-pressed="true">All</button>
+      <button type="button" class="filter-btn" data-filter="security" aria-pressed="false">Security</button>
+      <button type="button" class="filter-btn" data-filter="networking" aria-pressed="false">Networking</button>
+      <button type="button" class="filter-btn" data-filter="web" aria-pressed="false">Web</button>
+      <button type="button" class="filter-btn" data-filter="software" aria-pressed="false">Software</button>
+    </div>
+    <p class="filter-status" aria-live="polite">Showing 7 of 7 projects</p>
+
     <div class="project" data-category="security">
       <h3>OpenSSH Log Analyzer</h3>
       <p class="role-meta">Mar. 2026 &ndash; May 2026</p>

@@ -15,19 +15,15 @@
     return window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
   }
 
+  // The button is in the HTML so the top bar never shifts; CSS draws the sun/moon icon.
   function initThemeToggle() {
-    var bar = document.querySelector(".topbar-inner");
-    if (!bar) return;
-
-    var btn = document.createElement("button");
-    btn.type = "button";
-    btn.className = "theme-toggle";
+    var btn = document.querySelector(".theme-toggle");
+    if (!btn) return;
 
     function render() {
-      var dark = currentTheme() === "dark";
-      btn.textContent = dark ? "☀" : "☾"; // sun / moon
-      btn.setAttribute("aria-label", dark ? "Switch to light mode" : "Switch to dark mode");
-      btn.title = btn.getAttribute("aria-label");
+      var label = currentTheme() === "dark" ? "Switch to light mode" : "Switch to dark mode";
+      btn.setAttribute("aria-label", label);
+      btn.title = label;
     }
 
     btn.addEventListener("click", function () {
@@ -42,14 +38,15 @@
     });
 
     render();
-    bar.appendChild(btn);
   }
 
-  /* ---------- Typing effect on the home page ---------- */
+  /* ---------- Typing effect in each page's banner label ---------- */
   function initTyping() {
-    var el = document.querySelector(".typed[data-words]");
-    if (!el || reduceMotion) return;
+    if (reduceMotion) return;
+    document.querySelectorAll(".typed[data-words]").forEach(startTyping);
+  }
 
+  function startTyping(el) {
     var words = el.getAttribute("data-words").split("|");
     var wordIndex = 0;
     var charIndex = words[0].length;
@@ -85,40 +82,14 @@
   }
 
   /* ---------- Project filter on the projects page ---------- */
-  var CATEGORY_LABELS = {
-    all: "All",
-    security: "Security",
-    networking: "Networking",
-    web: "Web",
-    software: "Software"
-  };
-
+  // The filter bar is in the HTML (shown only when JS runs) so the projects never jump down.
   function initProjectFilter() {
+    var bar = document.querySelector(".filter-bar");
+    var status = document.querySelector(".filter-status");
     var cards = document.querySelectorAll(".project[data-category]");
-    if (cards.length < 2) return;
+    if (!bar || !cards.length) return;
 
-    var main = document.getElementById("main");
-    var bar = document.createElement("div");
-    bar.className = "filter-bar";
-    bar.setAttribute("role", "group");
-    bar.setAttribute("aria-label", "Filter projects by category");
-
-    var status = document.createElement("p");
-    status.className = "filter-status";
-    status.setAttribute("aria-live", "polite");
-
-    Object.keys(CATEGORY_LABELS).forEach(function (key) {
-      var btn = document.createElement("button");
-      btn.type = "button";
-      btn.className = "filter-btn";
-      btn.textContent = CATEGORY_LABELS[key];
-      btn.setAttribute("data-filter", key);
-      btn.setAttribute("aria-pressed", key === "all" ? "true" : "false");
-      btn.addEventListener("click", function () {
-        apply(key);
-      });
-      bar.appendChild(btn);
-    });
+    var buttons = bar.querySelectorAll(".filter-btn");
 
     function apply(key) {
       var shown = 0;
@@ -127,27 +98,28 @@
         card.hidden = !match;
         if (match) shown++;
       });
-      bar.querySelectorAll(".filter-btn").forEach(function (b) {
+      buttons.forEach(function (b) {
         b.setAttribute("aria-pressed", b.getAttribute("data-filter") === key ? "true" : "false");
       });
-      status.textContent = "Showing " + shown + " of " + cards.length + " projects";
+      if (status) status.textContent = "Showing " + shown + " of " + cards.length + " projects";
     }
 
-    main.insertBefore(status, main.firstChild);
-    main.insertBefore(bar, status);
-    apply("all");
+    buttons.forEach(function (btn) {
+      btn.addEventListener("click", function () {
+        apply(btn.getAttribute("data-filter"));
+      });
+    });
   }
 
   /* ---------- Copy email button on the contact page ---------- */
   function initCopyEmail() {
     var item = document.querySelector("[data-copy]");
-    if (!item || !navigator.clipboard) return;
-
-    var btn = document.createElement("button");
-    btn.type = "button";
-    btn.className = "copy-btn";
-    btn.textContent = "Copy";
-    btn.setAttribute("aria-label", "Copy email address");
+    var btn = item && item.querySelector(".copy-btn");
+    if (!btn) return;
+    if (!navigator.clipboard) {
+      btn.remove();
+      return;
+    }
 
     btn.addEventListener("click", function () {
       navigator.clipboard.writeText(item.getAttribute("data-copy")).then(
@@ -160,19 +132,17 @@
           }, 1800);
         },
         function () {
-          btn.textContent = "Press ⌘C";
+          btn.textContent = "Press \u2318C";
         }
       );
     });
-
-    item.appendChild(btn);
   }
 
   /* ---------- Fade cards in as they scroll into view ---------- */
   function initReveal() {
     if (reduceMotion || !("IntersectionObserver" in window)) return;
 
-    var targets = document.querySelectorAll(".project, .card, .fact-card, .contact-item, .doc-link, .rec-placeholder");
+    var targets = document.querySelectorAll(".project, .card, .fact-card, .contact-item, .doc-link");
     var observer = new IntersectionObserver(
       function (entries) {
         entries.forEach(function (entry) {
@@ -182,7 +152,7 @@
           }
         });
       },
-      { rootMargin: "0px 0px -40px 0px" }
+      { rootMargin: "0px 0px 60px 0px" }
     );
 
     targets.forEach(function (el) {

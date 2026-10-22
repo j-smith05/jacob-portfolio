@@ -1,0 +1,9 @@
+# Security contact for j-smith05.github.io/jacob-portfolio
+# Format: RFC 9116 (https://www.rfc-editor.org/rfc/rfc9116)
+#
+# Found an issue with this site? Thanks for looking out — please email me.
+
+Contact: mailto:jesmith4405@icloud.com
+Expires: 2027-10-01T00:00:00.000Z
+Preferred-Languages: en
+Canonical: https://j-smith05.github.io/jacob-portfolio/.well-known/security.txt
