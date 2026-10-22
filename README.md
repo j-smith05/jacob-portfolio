@@ -10,13 +10,13 @@ Personal portfolio for Jacob Smith, a B.S. Computer Science (Cybersecurity Empha
 jacob-portfolio/
 ├── index.html          # Home page (GitHub Pages serves this from the root)
 ├── 404.html            # Not-found page; also forwards old URLs to their new location
-├── pages/              # Projects, About, and Contact pages
+├── pages/              # Projects, About, Contact, and project write-up pages
 ├── css/style.css       # All styles, including light and dark themes
 ├── js/
 │   ├── theme.js        # Applies a saved light/dark choice before the page paints
 │   ├── main.js         # Interactive features (see below)
 │   └── redirect.js     # Old-URL forwarding used by 404.html
-├── files/              # Resume, cover letter, and other PDFs
+├── files/              # Resume PDF
 ├── images/             # Profile photo, social preview image, favicon
 ├── .well-known/
 │   └── security.txt    # How to report a security issue (RFC 9116)
