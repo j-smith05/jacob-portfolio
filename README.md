@@ -16,7 +16,7 @@ jacob-portfolio/
 │   ├── theme.js        # Applies a saved light/dark choice before the page paints
 │   ├── main.js         # Interactive features (see below)
 │   └── redirect.js     # Old-URL forwarding used by 404.html
-├── files/              # Resume PDF
+├── files/              # Resume and recommendation letter PDFs
 ├── images/             # Profile photo, social preview image, favicon
 ├── .well-known/
 │   └── security.txt    # How to report a security issue (RFC 9116)

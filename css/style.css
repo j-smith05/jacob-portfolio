@@ -476,6 +476,71 @@ h3 {
   font-size: 0.85rem;
 }
 
+.rec-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 18px;
+  margin: 16px 0 20px 0;
+}
+
+.rec-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 22px 24px;
+  box-shadow: 0 2px 10px var(--shadow);
+  display: flex;
+  flex-direction: column;
+}
+
+.rec-card .quote {
+  margin: 0 0 16px 0;
+  color: var(--text);
+  font-style: italic;
+  flex-grow: 1;
+}
+
+.rec-card .quote::before {
+  content: "\201C";
+  color: var(--link);
+  font-size: 1.4rem;
+  font-weight: 700;
+  margin-right: 2px;
+}
+
+.rec-author strong {
+  display: block;
+  color: var(--heading);
+}
+
+.rec-author span {
+  display: block;
+  color: var(--muted);
+  font-size: 0.85rem;
+  margin: 2px 0 12px 0;
+}
+
+.rec-card-compact {
+  max-width: 640px;
+}
+
+.rec-card .btn-link {
+  white-space: normal;
+}
+
+.rec-placeholder {
+  border: 2px dashed var(--border);
+  border-radius: 10px;
+  padding: 22px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: var(--muted);
+  font-weight: 600;
+  min-height: 140px;
+}
+
 .contact-item {
   display: flex;
   align-items: center;

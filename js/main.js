@@ -142,7 +142,7 @@
   function initReveal() {
     if (reduceMotion || !("IntersectionObserver" in window)) return;
 
-    var targets = document.querySelectorAll(".project, .card, .fact-card, .contact-item, .doc-link");
+    var targets = document.querySelectorAll(".project, .card, .fact-card, .contact-item, .doc-link, .rec-card, .rec-placeholder");
     var observer = new IntersectionObserver(
       function (entries) {
         entries.forEach(function (entry) {

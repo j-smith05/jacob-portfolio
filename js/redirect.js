@@ -14,7 +14,8 @@
     "style.css": "css/style.css",
     "og-image.png": "images/og-image.png",
     "LinkedInPP.JPG": "images/jacob-smith.jpg",
-    "files/Jacob-Smith-Resume.pdf": "files/jacob-smith-resume.pdf"
+    "files/Jacob-Smith-Resume.pdf": "files/jacob-smith-resume.pdf",
+    "files/Recommendation-Letter.pdf": "files/recommendation-letter-bisterfeldt.pdf"
   };
 
   var path = window.location.pathname;
