@@ -675,11 +675,6 @@ footer {
   margin-left: 4px;
 }
 
-.edu-blurb {
-  color: var(--muted);
-  margin: 0 0 14px 0;
-}
-
 /* ---------- Accessibility ---------- */
 .skip-link {
   position: absolute;
