@@ -70,12 +70,19 @@
         <span class="tag">Git</span>
       </div>
       <p>
-        A Java application, built on a team of three, that parses and analyzes 194,000+ OpenSSH server log entries
-        for security-related activity. Custom disk-based B-Trees with an LRU cache feed results into SQLite, which
-        surfaced 160,000+ failed logins from 1,007 IPs, 87% of them targeting root, and led to concrete SSH
-        hardening recommendations.
+        A Java application, built on a team of three, that parses 194,000+ OpenSSH server log entries and turns them
+        into answers about who was attacking the server, which accounts they targeted, and when. Each log event becomes
+        a key such as a failed login from a given IP, stored in custom disk-based B-Trees that count repeats instead of
+        holding duplicates, with an LRU cache keeping frequently used nodes in memory. The results load into SQLite so
+        questions like &ldquo;top 25 attacking IPs&rdquo; become a single query, and the test suite ran on AWS EC2.
       </p>
-      <a href="ssh-log-analyzer.html">Read the write-up &rarr;</a>
+      <p>
+        The data surfaced 160,000+ failed logins from 1,007 IPs, with the top 10 sending nearly two thirds of them and
+        87% targeting root. Attacks peaked around 4 AM, and none of the brute-force IPs ever got in. I integrated the
+        LRU cache, debugged tree creation and search until every result matched the reference output, and wrote the
+        analysis report, which recommended disabling root login, using key-based authentication, and banning repeat
+        offenders with fail2ban.
+      </p>
     </div>
 
     <div class="project" data-category="networking">
@@ -89,13 +96,17 @@
         <span class="tag">Bash</span>
       </div>
       <p>
-        A C command-line tool built on POSIX sockets that fetches pages over raw HTTP and times each stage of the
-        load &mdash; DNS lookup, TCP connect, time to first byte, and total transfer. Used it to measure Debian mirrors
-        across the U.S., Europe, and Japan from three vantage points (laptop, university server, and cloud
-        Codespace), then compared results against speed-of-light propagation limits to analyze routing, caching,
-        and NAT effects.
+        A C command-line tool built on POSIX sockets that fetches a page over plain HTTP and times each stage of the
+        load separately: DNS lookup, TCP connect, time to first byte, and total transfer. A Bash script ran it against
+        Debian mirrors in Utah, California, New York, Germany, and Japan, plus a CDN, from three vantage points: my
+        laptop, Boise State&rsquo;s Onyx server, and a GitHub Codespace.
       </p>
-      <p><em>Academic project &mdash; not publicly available.</em></p>
+      <p>
+        I predicted each connect time from distance and the speed of light in fiber, then explained why reality was
+        slower. Utah, the closest mirror, connected over ten times slower than its physical limit because of routing,
+        and the same 13&nbsp;MB file downloaded almost 13 times faster from Utah than from Japan. The assignment also had
+        us audit the AI agent that helped build the tool, and I caught it reporting a failed DNS trace as a success.
+      </p>
     </div>
 
     <div class="project" data-category="networking">
@@ -108,11 +119,16 @@
         <span class="tag">Checksums</span>
       </div>
       <p>
-        A Go-Back-N sender and receiver in C that reliably transfers files over UDP through a relay that randomly
-        drops, corrupts, and duplicates packets. Detects tampered data with the Internet checksum, recovers with
-        sequence numbers, ACKs, and retransmission timeouts, and was benchmarked across window sizes and loss rates.
+        A Go-Back-N sender and receiver in C that reliably transfers a file over UDP through a relay that randomly
+        drops, corrupts, and duplicates packets. Each packet carries a small header with a sequence number, length, and
+        Internet checksum, so damaged packets are detected and thrown away. The sender keeps a sliding window of
+        unacknowledged packets and resends the window on timeout, while the receiver only accepts packets in order.
       </p>
-      <a href="https://github.com/j-smith05/cs425-p2" target="_blank" rel="noopener noreferrer">View on GitHub</a>
+      <p>
+        The code is split into packet, protocol, and networking layers, which let me unit test the protocol logic to
+        100% coverage. In benchmarks, a window of 16 packets moved data about 15 times faster than sending one at a
+        time, and it stayed well ahead even with 5% packet loss.
+      </p>
     </div>
 
     <div class="project" data-category="software">
@@ -124,11 +140,14 @@
         <span class="tag">Java</span>
       </div>
       <p>
-        Ported a Java banking application to Go, replacing class inheritance with Go structs, interfaces, and
-        packages. Uses goroutines and channels to calculate interest across checking and savings accounts
-        concurrently, verified against a provided test suite.
+        Ported a Java banking application with customers, checking accounts, and savings accounts to Go. Since Go has no
+        classes or inheritance, I rebuilt the design with packages, an account interface, and structs that embed a shared
+        base account, so each account type reuses common deposit and withdraw logic and adds its own interest rules.
       </p>
-      <a href="https://github.com/j-smith05/CS354" target="_blank" rel="noopener noreferrer">View on GitHub</a>
+      <p>
+        The bank calculates interest across all accounts concurrently, starting one goroutine per account and collecting
+        the results over a channel. The output matched the original Java program exactly against the provided test suite.
+      </p>
     </div>
 
     <div class="project" data-category="networking">
@@ -141,11 +160,16 @@
         <span class="tag">Unit Testing</span>
       </div>
       <p>
-        A command-line email client in C that speaks SMTP directly over TCP sockets, handling the full HELO / MAIL FROM /
-        RCPT TO / DATA exchange, multiline server responses, dot-stuffing, partial reads and writes, and unexpected
-        disconnects. Unit tested to 100% code coverage and built with AddressSanitizer to catch memory errors.
+        A command-line email client in C that talks to a mail server directly over a TCP socket, walking through the full
+        SMTP conversation (HELO, MAIL FROM, RCPT TO, DATA, QUIT) and checking the server&rsquo;s reply code at every step.
+        It handles the details a real connection throws at you: multiline replies, reads and writes that only send part of
+        the data, dot-stuffing message lines that start with a period, and servers that disconnect unexpectedly.
       </p>
-      <a href="https://github.com/j-smith05/cs425-p1" target="_blank" rel="noopener noreferrer">View on GitHub</a>
+      <p>
+        The SMTP logic reads and writes through a swappable transport, so tests could replace the real socket with a fake
+        server that sends scripted, broken-up, or failing responses. That made every error path testable, reaching 100%
+        line coverage across 14 unit tests, all run under AddressSanitizer to catch memory errors.
+      </p>
     </div>
 
     <div class="project" data-category="web">
@@ -159,11 +183,14 @@
         <span class="tag">Scrum</span>
       </div>
       <p>
-        A full-stack, interactive Jeopardy-style trivia game built by a five-person team using Scrum. The HTML, CSS,
-        and JavaScript front end pulls questions from a Node.js/Express REST API backed by SQLite, with Jest and
-        Supertest for API testing.
+        A full-stack, interactive Jeopardy-style trivia game built by a five-person team using Scrum. Questions for three
+        game boards and 15 categories live in a SQLite database, served by a Node.js/Express REST API, and the HTML, CSS,
+        and JavaScript front end pulls them in to fill the board. Jest and Supertest check the API endpoints.
       </p>
-      <a href="https://github.com/j-smith05/CS208-F25-Team5" target="_blank" rel="noopener noreferrer">View on GitHub</a>
+      <p>
+        I worked mostly on gameplay and the front end, closing 17 issues: the clickable game board, board reset, team name
+        entry, safe winner input, a score undo feature, a round timer built end to end, and a redesigned home page.
+      </p>
     </div>
 
     <div class="project" data-category="security web">
