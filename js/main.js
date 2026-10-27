@@ -194,7 +194,7 @@
     if (!window.console) return;
     console.log(
       "%cHi there, fellow inspector of source code! 👋",
-      "color:#d64309;font-size:14px;font-weight:bold;"
+      "font-size:14px;font-weight:600;"
     );
     console.log("This site uses plain HTML, CSS & JavaScript with a strict Content-Security-Policy.");
     console.log("Like what you see? Reach me at jesmith4405@icloud.com");
