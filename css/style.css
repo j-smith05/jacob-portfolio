@@ -621,19 +621,6 @@ strong {
   margin-top: 14px;
 }
 
-.rec-placeholder {
-  border: 1px dashed var(--border-strong);
-  border-radius: 12px;
-  padding: 24px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  color: var(--muted);
-  font-size: 0.9rem;
-  min-height: 140px;
-}
-
 /* ---------- Contact ---------- */
 .contact-item {
   display: flex;
