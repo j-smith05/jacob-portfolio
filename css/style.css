@@ -599,6 +599,17 @@ strong {
   flex-grow: 1;
 }
 
+/* Cards share the grid's rows (quote / author / link), so names, titles,
+   and links line up across cards even when titles wrap to different lengths */
+@supports (grid-template-rows: subgrid) {
+  .rec-card {
+    display: grid;
+    grid-row: span 3;
+    grid-template-rows: subgrid;
+    row-gap: 0;
+  }
+}
+
 .rec-card .quote::before {
   content: "\201C";
 }
