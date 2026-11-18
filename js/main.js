@@ -66,7 +66,6 @@
         }
         setTimeout(tick, 45);
       } else {
-        word = words[wordIndex];
         charIndex++;
         el.textContent = word.slice(0, charIndex);
         if (charIndex === word.length) {
@@ -132,7 +131,7 @@
           }, 1800);
         },
         function () {
-          btn.textContent = "Press \u2318C";
+          btn.textContent = /Mac|iPhone|iPad/.test(navigator.userAgent) ? "Press \u2318C" : "Press Ctrl+C";
         }
       );
     });

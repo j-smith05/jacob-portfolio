@@ -13,7 +13,7 @@
     "contact.html": "pages/contact.html",
     "style.css": "css/style.css",
     "og-image.png": "images/og-image.png",
-    "LinkedInPP.JPG": "images/jacob-smith.jpg",
+    "LinkedInPP.JPG": "images/jacob-smith-headshot.jpg",
     "files/Jacob-Smith-Resume.pdf": "files/jacob-smith-resume.pdf",
     "files/Recommendation-Letter.pdf": "files/recommendation-letter-bisterfeldt.pdf"
   };
