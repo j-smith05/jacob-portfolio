@@ -13,9 +13,9 @@
   --accent-soft: #a5e3ef;
   --accent-tint: #e4f6fa;
   --on-accent: #ffffff;
-  --glow: rgba(6, 182, 212, 0.14);
   --shadow: 0 1px 2px rgba(15, 23, 42, 0.04), 0 4px 16px rgba(15, 23, 42, 0.04);
   --topbar-bg: rgba(247, 248, 251, 0.82);
+  --texture-line: rgba(15, 23, 42, 0.09);
   --font: -apple-system, BlinkMacSystemFont, "Inter", "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
   --mono: ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
   color-scheme: light;
@@ -37,9 +37,9 @@
     --accent-soft: #1a5563;
     --accent-tint: #0f2c36;
     --on-accent: #0e131d;
-    --glow: rgba(34, 211, 238, 0.12);
     --shadow: 0 1px 2px rgba(0, 0, 0, 0.25);
     --topbar-bg: rgba(14, 19, 29, 0.8);
+    --texture-line: rgba(255, 255, 255, 0.07);
     color-scheme: dark;
   }
 }
@@ -58,9 +58,9 @@
   --accent-soft: #1a5563;
   --accent-tint: #0f2c36;
   --on-accent: #0e131d;
-  --glow: rgba(34, 211, 238, 0.12);
   --shadow: 0 1px 2px rgba(0, 0, 0, 0.25);
   --topbar-bg: rgba(14, 19, 29, 0.8);
+  --texture-line: rgba(255, 255, 255, 0.07);
   color-scheme: dark;
 }
 
@@ -95,6 +95,20 @@ body {
   display: flex;
   flex-direction: column;
   -webkit-font-smoothing: antialiased;
+}
+
+/* Faint box-grid texture behind the page, even across the whole viewport */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background-image:
+    linear-gradient(var(--texture-line) 1px, transparent 1px),
+    linear-gradient(90deg, var(--texture-line) 1px, transparent 1px);
+  background-size: 32px 32px;
+  background-position: 0 0;
 }
 
 a {
@@ -184,7 +198,6 @@ p a:hover {
 /* ---------- Page header ---------- */
 header {
   padding: 72px 0 8px 0;
-  background: radial-gradient(ellipse 60% 100% at 30% 0%, var(--glow), transparent 70%);
 }
 
 .container {
@@ -423,7 +436,7 @@ strong {
   object-fit: cover;
   border-radius: 50%;
   border: 4px solid var(--card);
-  box-shadow: 0 0 0 1px var(--accent-soft), 0 10px 32px var(--glow);
+  box-shadow: 0 0 0 1px var(--accent-soft);
 }
 
 .hero-location {
