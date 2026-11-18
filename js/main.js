@@ -40,7 +40,7 @@
     render();
   }
 
-  /* ---------- Typing effect in each page's banner label ---------- */
+  /* ---------- Typing effect in the home page banner ---------- */
   function initTyping() {
     if (reduceMotion) return;
     document.querySelectorAll(".typed[data-words]").forEach(startTyping);
